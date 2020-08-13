@@ -156,7 +156,7 @@ namespace KWLeLearning.Controllers
                 var result = await UserManager.CreateAsync(user, model.Register.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+                   // await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
 
                     var newStudent = new ApplicationDbContext();
                     var student = new Student();
@@ -172,7 +172,7 @@ namespace KWLeLearning.Controllers
                     newStudent.SaveChanges();
                    
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Details", "Student", student);
                 }
                 AddErrors(result);
             }
@@ -180,6 +180,8 @@ namespace KWLeLearning.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
+
+
 
         //
         // GET: /Account/ConfirmEmail
