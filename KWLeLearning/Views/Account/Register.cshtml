@@ -6,12 +6,12 @@
     ViewBag.Title = "Register";
 }
 
-<h2>@ViewBag.Title.</h2>
+<h3>Create a new student account</h3>
 
 @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
-    <h4>Create a new account.</h4>
+
     <hr />
     @Html.ValidationSummary("", new { @class = "text-danger" })
     <div class="form-group">
@@ -45,7 +45,12 @@
     <div class="form-group">
         @Html.LabelFor(m => m.StudentDetails.Team, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.StudentDetails.Team, new { @class = "form-control" })
+            @Html.DropDownListFor(m => m.StudentDetails.Team, new List<SelectListItem>
+       {
+           new SelectListItem {Value = "Alpha", Text = "Alpha"},
+           new SelectListItem {Value = "Beta", Text = "Beta"},
+           new SelectListItem {Value = "Delta", Text = "Delta"}
+       }, new {@class = "form-control"} )
         </div>
     </div>
 
