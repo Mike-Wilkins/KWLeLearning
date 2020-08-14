@@ -267,6 +267,14 @@
     <Compile Include="Migrations\202008141344126_AddEmail.designer.cs">
       <DependentUpon>202008141344126_AddEmail.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202008141505154_StudentRequiredValidation.cs" />
+    <Compile Include="Migrations\202008141505154_StudentRequiredValidation.designer.cs">
+      <DependentUpon>202008141505154_StudentRequiredValidation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008141510040_ModifyValidation.cs" />
+    <Compile Include="Migrations\202008141510040_ModifyValidation.designer.cs">
+      <DependentUpon>202008141510040_ModifyValidation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -463,6 +471,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202008141344126_AddEmail.resx">
       <DependentUpon>202008141344126_AddEmail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008141505154_StudentRequiredValidation.resx">
+      <DependentUpon>202008141505154_StudentRequiredValidation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008141510040_ModifyValidation.resx">
+      <DependentUpon>202008141510040_ModifyValidation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
