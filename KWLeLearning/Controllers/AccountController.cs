@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using KWLeLearning.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace KWLeLearning.Controllers
 {
@@ -26,6 +27,7 @@ namespace KWLeLearning.Controllers
         {
             UserManager = userManager;
             SignInManager = signInManager;
+
         }
 
         public ApplicationSignInManager SignInManager
@@ -166,8 +168,8 @@ namespace KWLeLearning.Controllers
                     student.Firstname = model.StudentDetails.Firstname;
                     student.Surname = model.StudentDetails.Surname;
                     student.Team = model.StudentDetails.Team;
+                    student.Email = model.Register.Email;
                     
-
                     newStudent.Student.Add(student);
                     newStudent.SaveChanges();
                    
@@ -182,6 +184,34 @@ namespace KWLeLearning.Controllers
         }
 
 
+        //GET: Student/Delete
+        public ActionResult Delete(string email)
+        {
+            var student = new ApplicationDbContext();
+            var result = student.Student.Where(m => m.Email == email).FirstOrDefault();
+            return View(result);
+        }
+
+
+        //POST: Student/Delete
+        [HttpPost]
+        [ActionName("Delete")]
+        public async Task<ActionResult> ConfirmDelete(string email)
+        { 
+
+            // Remove from Database
+            var student = new ApplicationDbContext();
+            var result = student.Student.Where(m => m.Email == email).FirstOrDefault();
+
+            student.Student.Remove(result);
+            student.SaveChanges();
+
+            // Remove from Identity Users
+            var user = await UserManager.FindByEmailAsync(email);
+            await UserManager.DeleteAsync(user);
+
+            return RedirectToAction("Details", "Student", student.Student.OrderBy(m => m.Team).ToList());
+        }
 
         //
         // GET: /Account/ConfirmEmail

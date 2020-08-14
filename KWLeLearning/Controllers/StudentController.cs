@@ -1,8 +1,11 @@
 ﻿using KWLeLearning.Models;
 using Microsoft.Ajax.Utilities;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
@@ -11,6 +14,7 @@ namespace KWLeLearning.Controllers
 {
     public class StudentController: Controller
     {
+         
         [Authorize(Roles ="Teacher")]
         public ActionResult Details()
         {
@@ -41,12 +45,8 @@ namespace KWLeLearning.Controllers
 
             studentEdit.SaveChanges();
 
-
             return View("Details", studentEdit.Student.OrderBy(m => m.Team).ToList());
         }
 
-
-    }
-
-    
+    } 
 }
