@@ -250,6 +250,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LessonController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Global.asax.cs">
@@ -274,6 +275,10 @@
     <Compile Include="Migrations\202008141510040_ModifyValidation.cs" />
     <Compile Include="Migrations\202008141510040_ModifyValidation.designer.cs">
       <DependentUpon>202008141510040_ModifyValidation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008161324232_StudentKeyId.cs" />
+    <Compile Include="Migrations\202008161324232_StudentKeyId.designer.cs">
+      <DependentUpon>202008161324232_StudentKeyId.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -447,6 +452,8 @@
     <Content Include="Views\Student\Details.cshtml" />
     <Content Include="Views\Student\Edit.cshtml" />
     <Content Include="Views\Account\Delete.cshtml" />
+    <Content Include="Views\Shared\_LessonPageLayout.cshtml" />
+    <Content Include="Views\Lesson\KWL.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -478,6 +485,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202008141510040_ModifyValidation.resx">
       <DependentUpon>202008141510040_ModifyValidation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008161324232_StudentKeyId.resx">
+      <DependentUpon>202008161324232_StudentKeyId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
