@@ -8,6 +8,7 @@ namespace KWLeLearning.Models
 {
     public class Student
     {
+        [Key]
         public int Id { get; set; }
 
        
