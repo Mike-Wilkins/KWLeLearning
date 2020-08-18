@@ -81,6 +81,34 @@ namespace KWLeLearning.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+
+                    var db = new ApplicationDbContext();
+                    var teamResult = db.Student.Where(m => m.Password == model.Password).FirstOrDefault();
+
+                   
+
+                    Student team = new Student();
+                    team.Id = teamResult.Id;
+                    team.Firstname = teamResult.Firstname;
+                    team.Surname = teamResult.Surname;
+                    team.Password = teamResult.Password;
+                    team.Username = teamResult.Username;
+                    team.Team = teamResult.Team;
+                    team.IsLoggedIn = true;
+
+                    db.Student.Remove(teamResult);
+
+                    db.Student.Add(team);
+                    db.SaveChanges();
+
+       
+
+                    
+
+
+
+
+
                     return RedirectToAction("Index","Home", model);
                     //return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:

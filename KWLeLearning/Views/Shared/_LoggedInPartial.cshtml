@@ -1,0 +1,30 @@
+﻿@model IEnumerable<KWLeLearning.Models.Student>
+
+
+
+
+
+<h4>Logged In</h4>
+
+
+
+@foreach (var item in Model)
+{
+
+    @Html.DisplayFor(modelItem => item.Firstname)
+
+    if (item.IsLoggedIn == true)
+    {
+        <a>Logged In</a>
+    }
+
+
+
+    <br />
+}
+
+
+
+
+
+

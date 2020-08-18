@@ -454,6 +454,7 @@
     <Content Include="Views\Account\Delete.cshtml" />
     <Content Include="Views\Shared\_LessonPageLayout.cshtml" />
     <Content Include="Views\Lesson\KWL.cshtml" />
+    <Content Include="Views\Shared\_LoggedInPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

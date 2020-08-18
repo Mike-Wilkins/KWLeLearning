@@ -10,8 +10,16 @@
 
     <ul class="nav navbar-nav navbar-right">
 
+        @*<li><a href="@Url.Action("Index","Home")" style="padding:28px"><img src="@Url.Content("~/images/home.png")" height="30" /></a></li>
+        <li><a href="@Url.Action("Details","Student")" style="padding:28px"><img src="@Url.Content("~/images/details.png")" height="30" /></a></li> *@
+
         <li><a href="@Url.Action("Index","Home")" style="padding:28px"><img src="@Url.Content("~/images/home.png")" height="30" /></a></li>
         <li><a href="@Url.Action("Details","Student")" style="padding:28px"><img src="@Url.Content("~/images/details.png")" height="30" /></a></li>
+
+
+
+
+
         <li><a style="padding: 30px; color:azure; font-size:15px;" href="javascript:document.getElementById('logoutForm').submit()"><img src="@Url.Content("~/images/logoff.png")" height="27" style="padding-right:5px" /></a></li>
         <li><a style="padding: 32px; color:azure; font-size:15px;"><img src="@Url.Content("~/images/user.png")" height="23" style="padding-right:5px" /> @User.Identity.GetUserName()</a></li>
     </ul>
