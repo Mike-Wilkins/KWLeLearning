@@ -1,4 +1,4 @@
-﻿@model KWLeLearning.Models.Student
+﻿@model IEnumerable<KWLeLearning.Models.Student>
 
 @{
     ViewBag.Title = "KWL";
@@ -8,8 +8,17 @@
 
     <div class="row" style="margin-top: 50px">
 
-        <div class="jumbotron col-md-2" style="margin:5px">
-            <h2>KWL</h2>
+        <div class="jumbotron col-md-2" style="margin:5px; height: 300px">
+           
+            @{ 
+                Html.RenderPartial("_LoggedInPartial");
+            }
+            
+            @*
+            
+            @Model.Password;
+            *@
+           
         </div>
 
         <div class="jumbotron col-md-6" style="margin:5px">

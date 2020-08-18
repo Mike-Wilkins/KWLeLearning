@@ -8,7 +8,7 @@ namespace KWLeLearning.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(string password)
         {
             return View();
         }
