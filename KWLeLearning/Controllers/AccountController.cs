@@ -94,19 +94,13 @@ namespace KWLeLearning.Controllers
                     team.Password = teamResult.Password;
                     team.Username = teamResult.Username;
                     team.Team = teamResult.Team;
+                    team.Email = teamResult.Email;
                     team.IsLoggedIn = true;
 
                     db.Student.Remove(teamResult);
 
                     db.Student.Add(team);
                     db.SaveChanges();
-
-       
-
-                    
-
-
-
 
 
                     return RedirectToAction("Index","Home", model);
@@ -459,10 +453,29 @@ namespace KWLeLearning.Controllers
         // POST: /Account/LogOff
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult LogOff()
+        public ActionResult LogOff(string password)
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+
+            var dbContext = new ApplicationDbContext();
+            var result = dbContext.Student.Where(m => m.Password == password).FirstOrDefault();
+
+            Student student = new Student();
+
+            student.Firstname = result.Firstname;
+            student.Surname = result.Surname;
+            student.Username = result.Username;
+            student.Password = result.Password;
+            student.Email = result.Email;
+            student.Team = result.Team;
+            student.IsLoggedIn = false;
+
+            dbContext.Student.Remove(result);
+            dbContext.Student.Add(student);
+            dbContext.SaveChanges();
+
             return RedirectToAction("Index", "Home");
+           
         }
 
         //
