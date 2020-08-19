@@ -6,59 +6,63 @@
 
 
 
-<div class="row" style="margin-top: 50px">
+    <div class="row" style="margin-top: 50px">
 
 
 
-    <h2>Details</h2>
+        <h2>Details</h2>
 
-    <p>
-        @Html.ActionLink("Create New", "Register", "Account")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Firstname)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Surname)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Username)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Password)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Team)
-            </th>
-            <th></th>
-        </tr>
+        
+        @Html.ActionLink("Create New", "Register", "Account", new { Password = Request["Password"], Username = Request["Username"] }, new { @class = "btn btn-success btn-sm", @style="margin: 10px" })
+        
 
-        @foreach (var item in Model)
-        {
+        <table class="table">
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Firstname)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Surname)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Username)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Password)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Team)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { Id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", "Account", new { email = item.Email }, null)
-                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.Firstname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Surname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Username)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Password)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Team)
+                </th>
+                <th></th>
             </tr>
-        }
 
-    </table>
- </div>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Firstname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Surname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Username)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Password)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Team)
+                    </td>
+                    <td>
+
+                        @Html.ActionLink("Edit", "Edit", "Student", new { Id = item.Id, Password = item.Password }, new { @class = "btn btn-primary btn-xs", @style = "margin-right: 5px" })
+
+                        @Html.ActionLink("Delete", "Delete", "Account", new { email = item.Email, Password = item.Password }, new { @class = "btn btn-primary btn-xs" })
+
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
