@@ -3,29 +3,35 @@
 @{
     ViewBag.Title = "KWL";
     Layout = "~/Views/Shared/_LessonPageLayout.cshtml";
+
+    <style>
+        #container-style {
+            background-color: #edece8;
+            border-style: solid;
+            border-color: #dbd3de;
+            border-width: 2px;
+            height: 500px;
+            margin: 5px;
+            border-radius: 10px;
+            text-align: center
+        }
+    </style>
 }
 
-
     <div class="row" style="margin-top: 50px">
+        <div class="container-fluid col-md-1" id="container-style" style="height: 170px">
 
-        <div class="jumbotron col-md-2" style="margin:5px; height: 300px">
-           
-            @{ 
+            @{
                 Html.RenderPartial("_LoggedInPartial");
             }
-            
-            @*
-            
-            @Model.Password;
-            *@
-           
+
         </div>
 
-        <div class="jumbotron col-md-6" style="margin:5px">
+        <div class="container-fluid col-md-7" id="container-style">
             <h2>Lesson</h2>
         </div>
 
-        <div class="jumbotron col-md-3" style="margin:5px">
+        <div class="container-fluid col-md-3" id="container-style">
             <h2>instruction</h2>
         </div>
 

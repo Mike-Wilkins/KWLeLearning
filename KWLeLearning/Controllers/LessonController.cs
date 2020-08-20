@@ -10,6 +10,7 @@ namespace KWLeLearning.Controllers
 {
     public class LessonController: Controller
     {
+        [Authorize]
         // GET: KWL Team
         public ActionResult KWL(string password, string username)
         {
