@@ -1,27 +1,32 @@
 ﻿@model IEnumerable<KWLeLearning.Models.Student>
 
+<!DOCTYPE html>
+<html>
+    <body>
+        <h3>Team</h3>
+        <table>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td style="padding-right: 5px; padding-left:15px">@Html.DisplayFor(modelItem => item.Firstname)</td>
+
+                    @if(item.IsLoggedIn == true)
+                    {
+                        <td><img src="~/images/loggedin.png" height="15" style="margin-bottom:3px" /></td>
+                    }
+                    else
+                    {
+                        <td><img src="~/images/loggedOut.png" height="15" style="margin-bottom:3px" /></td>
+                    }
+                </tr>
+
+            }
+        </table>
+    </body>
+</html>
 
 
 
-
-<h4>Logged In</h4>
-
-
-
-@foreach (var item in Model)
-{
-
-    @Html.DisplayFor(modelItem => item.Firstname)
-
-    if (item.IsLoggedIn == true)
-    {
-        <a>Logged In</a>
-    }
-
-
-
-    <br />
-}
 
 
 

@@ -457,6 +457,8 @@ namespace KWLeLearning.Controllers
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
 
+            if (password != null) { 
+
             var dbContext = new ApplicationDbContext();
             var result = dbContext.Student.Where(m => m.Password == password).FirstOrDefault();
 
@@ -473,6 +475,10 @@ namespace KWLeLearning.Controllers
             dbContext.Student.Remove(result);
             dbContext.Student.Add(student);
             dbContext.SaveChanges();
+
+                return RedirectToAction("Index", "Home");
+
+            }
 
             return RedirectToAction("Index", "Home");
            
