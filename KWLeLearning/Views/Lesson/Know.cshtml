@@ -1,0 +1,72 @@
+﻿@model IEnumerable<KWLeLearning.Models.Student>
+
+@{
+    ViewBag.Title = "Know";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+
+    <style>
+        #container-style {
+            background-color: #f5f6f7;
+            border-style: solid;
+            border-color: #dbd3de;
+            border-width: 2px;
+            height: 650px;
+            margin: 5px;
+            border-radius: 10px;
+            text-align: center
+        }
+        #know-container {
+            background-color: white;
+            border-style: solid;
+            border-color: black;
+            border-width: 1px;
+            height: 530px;
+            width: 825px;
+            margin-top: 67px;
+            border-radius: 5px;
+        }
+
+        .tab-button {
+            color: #364c73;
+            margin-top:30px;
+            background-color: white;
+            border-style: solid;
+            border-color: black;
+            border-bottom-right-radius: 0px;
+            border-bottom-left-radius: 0px;
+            border-bottom-color: white;
+            border-width: 1px;
+        }
+
+    </style>
+}
+
+<div class="row" style="margin-top: 50px">
+    <div class="container-fluid col-md-1" id="container-style" style="height: 170px">
+
+        @{
+            Html.RenderPartial("_LoggedInPartial");
+        }
+
+    </div>
+
+    <div class="container-fluid col-md-8" id="container-style">
+        @Html.ActionLink("Know", "Know", "Lesson", new { Password = Request["Password"], Username = Request["Username"] }, new { @class=" btn tab-button", @style="float:left; margin-left: 10px"})
+        @Html.ActionLink("What", "What", "Lesson", new { Password = Request["Password"], Username = Request["Username"] }, new { @class = "btn tab-button disabled", @style= "background-color: #d7d9db; border-bottom-color: black; float: left; margin-left:5px" })
+        @Html.ActionLink("Learned", "Learned", "Lesson", new { Password = Request["Password"], Username = Request["Username"] }, new { @class = "btn tab-button disabled", @style = "background-color: #d7d9db; border-bottom-color: black;float: left; margin-left:5px" })
+        <div class="container" id="know-container">
+            <a>Hello Know</a>
+        </div>
+    </div>
+
+    <div class="container-fluid col-md-2" id="container-style">
+        <h2>instruction</h2>
+    </div>
+
+</div>
+
+
+
+
+

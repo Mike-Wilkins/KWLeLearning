@@ -452,11 +452,13 @@
     <Content Include="Views\Student\Details.cshtml" />
     <Content Include="Views\Student\Edit.cshtml" />
     <Content Include="Views\Account\Delete.cshtml" />
-    <Content Include="Views\Shared\_LessonPageLayout.cshtml" />
-    <Content Include="Views\Lesson\KWL.cshtml" />
+    <Content Include="Views\Shared\_LessonLayout.cshtml" />
+    <Content Include="Views\Lesson\Know.cshtml" />
     <Content Include="Views\Shared\_LoggedInPartial.cshtml" />
     <Content Include="Views\Account\Logoff.cshtml" />
     <Content Include="Views\Shared\_LessonLoginPartial.cshtml" />
+    <Content Include="Views\Lesson\What.cshtml" />
+    <Content Include="Views\Lesson\Learned.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

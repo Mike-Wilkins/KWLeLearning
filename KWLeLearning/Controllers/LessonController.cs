@@ -11,8 +11,8 @@ namespace KWLeLearning.Controllers
     public class LessonController: Controller
     {
         [Authorize]
-        // GET: KWL Team
-        public ActionResult KWL(string password, string username)
+        // GET: Know Team
+        public ActionResult Know(string password, string username)
         {
             var db = new ApplicationDbContext();
             var result = db.Student.Where(m => m.Password == password).FirstOrDefault();
@@ -23,6 +23,28 @@ namespace KWLeLearning.Controllers
             return View(team);
         }
 
+        // GET: What Team
+        public ActionResult What(string password, string username)
+        {
+            var db = new ApplicationDbContext();
+            var result = db.Student.Where(m => m.Password == password).FirstOrDefault();
 
+            var dbTeam = new ApplicationDbContext();
+            var team = dbTeam.Student.Where(m => m.Team == result.Team).ToList();
+
+            return View(team);
+        }
+
+        // GET: Learned Team
+        public ActionResult Learned(string password, string username)
+        {
+            var db = new ApplicationDbContext();
+            var result = db.Student.Where(m => m.Password == password).FirstOrDefault();
+
+            var dbTeam = new ApplicationDbContext();
+            var team = dbTeam.Student.Where(m => m.Team == result.Team).ToList();
+
+            return View(team);
+        }
     }
 }
