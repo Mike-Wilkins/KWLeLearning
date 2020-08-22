@@ -4,9 +4,10 @@
     ViewBag.Title = "KWL";
     Layout = "~/Views/Shared/_LessonPageLayout.cshtml";
 
+
     <style>
         #container-style {
-            background-color: #edece8;
+            background-color: #f5f6f7;
             border-style: solid;
             border-color: #dbd3de;
             border-width: 2px;
@@ -15,29 +16,67 @@
             border-radius: 10px;
             text-align: center
         }
+        .nav-item :hover {
+            background-color: #033554
+        }
+
+        .tab-link :hover {
+            background-color: #d5d8db
+        }
+       
+
     </style>
 }
 
-    <div class="row" style="margin-top: 50px">
-        <div class="container-fluid col-md-1" id="container-style" style="height: 170px">
+<div class="row" style="margin-top: 10px">
+    <div class="container-fluid col-md-1" id="container-style" style="height: 170px">
 
-            @{
-                Html.RenderPartial("_LoggedInPartial");
-            }
-
-        </div>
-
-        <div class="container-fluid col-md-7" id="container-style">
-            <h2>Lesson</h2>
-        </div>
-
-        <div class="container-fluid col-md-3" id="container-style">
-            <h2>instruction</h2>
-        </div>
+        @{
+            Html.RenderPartial("_LoggedInPartial");
+        }
 
     </div>
 
 
+    <div class="container-fluid col-md-8" id="container-style" >
 
-        
+        <h3>Tabs</h3>
+        <ul class="nav nav-tabs">
+
+            <li class="tab-link"><a class="nav-link active" id="home-tab" data-toggle="tab" href="#know" role="tab" aria-controls="home" aria-selected="true" aria-expanded="true">Know</a></li>
+            <li class="tab-link"><a class="nav-link" id="profile-tab" data-toggle="tab" href="#what" role="tab" aria-controls="profile" aria-selected="false"  >What</a></li>
+            <li class="tab-link"><a class="nav-link" id="contact-tab" data-toggle="tab" href="#learned" role="tab" aria-controls="contact" aria-selected="false">Learned</a></li>
+       
+        </ul>
+        <br>
+
+        <div id="test" class="tab-content">
+          
+          
+                <div class="tab-pane fade show active" id="know">
+                    <p>Know Comments</p>
+                </div>
+               
+                <div class="tab-pane fade" id="what">
+                    <p>What Comments</p>
+                </div>
+                <div class="tab-pane fade" id="learned">
+                    <p>Learned Comments</p>
+                </div>
+
+           
+
+        </div>
+
+    </div>
+
+    <div class="container-fluid col-md-2" id="container-style">
+        <h2>instruction</h2>
+    </div>
+
+</div>
+
+
+
+
 

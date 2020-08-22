@@ -1,0 +1,69 @@
+﻿@using Microsoft.AspNet.Identity
+
+
+
+<!doctype html>
+<html lang="en" class="h-100">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Keg Cop</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/cerulean/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+</head>
+
+<body class="d-flex flex-column h-100">
+    @if (Request.IsAuthenticated)
+    {
+
+        if (User.IsInRole("Teacher"))
+        {
+            using (Html.BeginForm("LogOff", "Account", new { Password = Request["Password"] }, FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <header>
+                    <nav class="navbar navbar-expand-lg">
+                       
+                            <ul class="navbar-nav mr-auto" >
+                                <li class="nav-item"><a href="@Url.Action("Index","Home", new { Password = Request["Password"]})" style="padding:28px"><img src="@Url.Content("~/images/home.png")" height="30" /></a></li>
+                                <li class="nav-item"><a href="@Url.Action("Details","Student", new { Password = Request["Password"]})" style="padding:28px"><img src="@Url.Content("~/images/details.png")" height="30" /></a></li>
+                                <li class="nav-item"><a style="padding: 30px" href="javascript:document.getElementById('logoutForm').submit()"><img src="@Url.Content("~/images/logoff.png")" height="27" style="padding-right:5px" /></a></li>
+                                <li class="nav-item"><a style="padding: 32px" color:azure; font-size:15px;><img src="@Url.Content("~/images/user.png")" height="23" style="padding-right:5px" /> @User.Identity.GetUserName()</a></li>
+                            </ul>
+                     
+                    </nav>
+                </header>
+            }
+        }
+        else
+        {
+            using (Html.BeginForm("LogOff", "Account", new { Password = Request["Password"] }, FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <header>
+                     <nav class="navbar navbar-expand-lg">
+                     
+                            <ul class="navbar-nav mr-auto" >
+                                <li class="nav-item"><a href="@Url.Action("Index","Home", new { Password = Request["Password"]})" style="padding:30px"><img src="@Url.Content("~/images/home.png")" height="30" /></a></li>
+                                <li class="nav-item"><a style="padding: 30px" href="javascript:document.getElementById('logoutForm').submit()"><img src="@Url.Content("~/images/logoff.png")" height="27" style="padding-right:5px" /></a></li>
+                                <li class="nav-item"><a style="padding: 30px; color:azure; font-size:15px;"><img src="@Url.Content("~/images/user.png")" height="23" style="padding-right:5px" /> @User.Identity.GetUserName()</a></li>
+                            </ul>
+                       
+                    </nav>
+                </header>
+
+            }
+        }
+    }
+   
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
