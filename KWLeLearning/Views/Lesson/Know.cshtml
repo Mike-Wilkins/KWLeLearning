@@ -4,7 +4,7 @@
     ViewBag.Title = "Know";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
-
+}
     <style>
         #container-style {
             background-color: #f5f6f7;
@@ -21,10 +21,10 @@
             border-style: solid;
             border-color: black;
             border-width: 1px;
-            height: 530px;
+            height: 560px;
             width: 825px;
             margin-top: 67px;
-            border-radius: 5px;
+            
         }
 
         .tab-button {
@@ -37,10 +37,18 @@
             border-bottom-left-radius: 0px;
             border-bottom-color: white;
             border-width: 1px;
+            @*pointer-events:none;*@
+        }
+        #what_I_know {
+            background-color: #d3cbf2;
+            margin-top: 5px;
+            margin-left: 40px;
+            border-radius: 5px;
+            height: 500px;
         }
 
     </style>
-}
+
 
 <div class="row" style="margin-top: 50px">
     <div class="container-fluid col-md-1" id="container-style" style="height: 170px">
@@ -52,11 +60,19 @@
     </div>
 
     <div class="container-fluid col-md-8" id="container-style">
-        @Html.ActionLink("Know", "Know", "Lesson", new { Password = Request["Password"], Username = Request["Username"] }, new { @class=" btn tab-button", @style="float:left; margin-left: 10px"})
+        @Html.ActionLink("Know", "Know", "Lesson", new { Password = Request["Password"], Username = Request["Username"]}, new { @class=" btn tab-button", @style="float:left; margin-left: 10px"})
         @Html.ActionLink("What", "What", "Lesson", new { Password = Request["Password"], Username = Request["Username"] }, new { @class = "btn tab-button disabled", @style= "background-color: #d7d9db; border-bottom-color: black; float: left; margin-left:5px" })
         @Html.ActionLink("Learned", "Learned", "Lesson", new { Password = Request["Password"], Username = Request["Username"] }, new { @class = "btn tab-button disabled", @style = "background-color: #d7d9db; border-bottom-color: black;float: left; margin-left:5px" })
         <div class="container" id="know-container">
-            <a>Hello Know</a>
+
+
+            <div class="container col-md-5" id="what_I_know">
+                <a>What I Know</a>
+            </div>
+            <div class="container col-md-5" id="what_I_know">
+                <a>Team Know</a>
+            </div>
+
         </div>
     </div>
 
@@ -65,8 +81,4 @@
     </div>
 
 </div>
-
-
-
-
 

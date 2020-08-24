@@ -21,6 +21,7 @@ namespace KWLeLearning.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Student> Student { get; set; }
+        public DbSet<Know> Know { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

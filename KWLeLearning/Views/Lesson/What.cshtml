@@ -16,6 +16,7 @@
             border-radius: 10px;
             text-align: center
         }
+
         #know-container {
             background-color: white;
             border-style: solid;
@@ -23,9 +24,25 @@
             border-width: 1px;
             height: 530px;
             width: 825px;
-            margin-top: 60px;
+            margin-top: 67px;
             border-radius: 5px;
         }
+
+        .tab-button {
+            color: #364c73;
+            margin-top: 30px;
+            background-color: white;
+            border-style: solid;
+            border-color: black;
+            border-bottom-right-radius: 0px;
+            border-bottom-left-radius: 0px;
+            border-bottom-color: white;
+            border-width: 1px;
+           
+           
+        }
+        
+
 
     </style>
 }
@@ -41,13 +58,13 @@
 
 
     <div class="container-fluid col-md-8" id="container-style">
-        @Html.ActionLink("Know", "Know", "Lesson", new { Password = Request["Password"], Username = Request["Username"] }, new { @class = "btn btn-success" })
-
-        @Html.ActionLink("What", "What", "Lesson", new { Password = Request["Password"], Username = Request["Username"] }, new { @class = "btn btn-success" })
-        @Html.ActionLink("Learned", "Learned", "Lesson", new { Password = Request["Password"], Username = Request["Username"] }, new { @class = "btn btn-success" })
+        @Html.ActionLink("Know", "Know", "Lesson", new { Password = Request["Password"], Username = Request["Username"] }, new { @class = " btn tab-button", @style = "background-color: #d7d9db; border-bottom-color: black; float:left; margin-left: 10px" })
+        @Html.ActionLink("What", "What", "Lesson", new { Password = Request["Password"], Username = Request["Username"] }, new { @class = "btn tab-button", @style = "float: left; margin-left:5px" })
+        @Html.ActionLink("Learned", "Learned", "Lesson", new { Password = Request["Password"], Username = Request["Username"] }, new { @class = "btn tab-button disabled", @style = "background-color: #d7d9db; border-bottom-color: black;float: left; margin-left:5px" })
 
         <div class="container" id="know-container">
             <a>Hello What</a>
+            
         </div>
 
 
