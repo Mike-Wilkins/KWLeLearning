@@ -7,13 +7,13 @@ namespace KWLeLearning.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class Know : IMigrationMetadata
+    public sealed partial class KnowCommentList : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Know));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(KnowCommentList));
         
         string IMigrationMetadata.Id
         {
-            get { return "202008241359301_Know"; }
+            get { return "202008241445477_KnowCommentList"; }
         }
         
         string IMigrationMetadata.Source

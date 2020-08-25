@@ -280,13 +280,13 @@
     <Compile Include="Migrations\202008161324232_StudentKeyId.designer.cs">
       <DependentUpon>202008161324232_StudentKeyId.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202008241359301_Know.cs" />
-    <Compile Include="Migrations\202008241359301_Know.designer.cs">
-      <DependentUpon>202008241359301_Know.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\202008241409567_KnowPassword.cs" />
     <Compile Include="Migrations\202008241409567_KnowPassword.designer.cs">
       <DependentUpon>202008241409567_KnowPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008241445477_KnowCommentList.cs" />
+    <Compile Include="Migrations\202008241445477_KnowCommentList.designer.cs">
+      <DependentUpon>202008241445477_KnowCommentList.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -504,11 +504,11 @@
     <EmbeddedResource Include="Migrations\202008161324232_StudentKeyId.resx">
       <DependentUpon>202008161324232_StudentKeyId.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008241359301_Know.resx">
-      <DependentUpon>202008241359301_Know.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202008241409567_KnowPassword.resx">
       <DependentUpon>202008241409567_KnowPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008241445477_KnowCommentList.resx">
+      <DependentUpon>202008241445477_KnowCommentList.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
