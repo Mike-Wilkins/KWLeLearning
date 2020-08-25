@@ -28,5 +28,7 @@ namespace KWLeLearning.Models
         public string Team { get; set; }
         public bool IsLoggedIn { get; set; }
 
+        public string Colour { get; set; }
+
     }
 }

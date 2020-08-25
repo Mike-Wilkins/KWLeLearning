@@ -85,8 +85,6 @@ namespace KWLeLearning.Controllers
                     var db = new ApplicationDbContext();
                     var teamResult = db.Student.Where(m => m.Password == model.Password).FirstOrDefault();
 
-                   
-
                     Student team = new Student();
                     team.Id = teamResult.Id;
                     team.Firstname = teamResult.Firstname;
@@ -95,6 +93,7 @@ namespace KWLeLearning.Controllers
                     team.Username = teamResult.Username;
                     team.Team = teamResult.Team;
                     team.Email = teamResult.Email;
+                    team.Colour = teamResult.Colour;
                     team.IsLoggedIn = true;
 
                     db.Student.Remove(teamResult);
@@ -103,7 +102,7 @@ namespace KWLeLearning.Controllers
                     db.SaveChanges();
 
 
-                    return RedirectToAction("Index","Home", model);
+                    return RedirectToAction("Index","Home", team);
                     //return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -192,6 +191,7 @@ namespace KWLeLearning.Controllers
                     student.Surname = model.StudentDetails.Surname;
                     student.Team = model.StudentDetails.Team;
                     student.Email = model.Register.Email;
+                    student.Colour = model.StudentDetails.Colour;
                     
                     newStudent.Student.Add(student);
                     newStudent.SaveChanges();
@@ -471,6 +471,7 @@ namespace KWLeLearning.Controllers
             student.Email = result.Email;
             student.Team = result.Team;
             student.IsLoggedIn = false;
+            student.Colour = result.Colour;
 
             dbContext.Student.Remove(result);
             dbContext.Student.Add(student);

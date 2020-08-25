@@ -5,49 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 
 }
-    <style>
-        #container-style {
-            background-color: #f5f6f7;
-            border-style: solid;
-            border-color: #dbd3de;
-            border-width: 2px;
-            height: 650px;
-            margin: 5px;
-            border-radius: 10px;
-            text-align: center
-        }
-        #know-container {
-            background-color: white;
-            border-style: solid;
-            border-color: black;
-            border-width: 1px;
-            height: 560px;
-            width: 825px;
-            margin-top: 67px;
-            
-        }
-
-        .tab-button {
-            color: #364c73;
-            margin-top:30px;
-            background-color: white;
-            border-style: solid;
-            border-color: black;
-            border-bottom-right-radius: 0px;
-            border-bottom-left-radius: 0px;
-            border-bottom-color: white;
-            border-width: 1px;
-            @*pointer-events:none;*@
-        }
-        #what_I_know {
-            background-color: #d3cbf2;
-            margin-top: 5px;
-            margin-left: 40px;
-            border-radius: 5px;
-            height: 450px;
-        }
-
-    </style>
+    
 
 
     <div class="row" style="margin-top: 50px">
@@ -79,29 +37,34 @@
 
             <div class="container" id="know-container">
 
-                @using (Html.BeginForm("Know", "Lesson", new { Password = Request["Password"]}, FormMethod.Post))
+                @using (Html.BeginForm("Know", "Lesson", new { Password = Request["Password"], Colour = Request["Colour"]}, FormMethod.Post))
                 {
                     <div class="form-group">
-                        @Html.LabelFor(m => m.KnowComment, new { @class = "col-md-2 control-label" })
-                        <div class="col-md-10">
-                            @Html.TextBoxFor(m => m.KnowComment, new { @class = "form-control" })
-                            <button type="submit">Know</button>
-
+            
+                        <div style="margin-top: 10px">
+                            <table>
+                                <tr>
+                                    <td>@Html.TextBoxFor(m => m.KnowComment, new { @class = "form-control", @style = "width:350px; margin-right: 5px"})</td>
+                                    <td><button class="btn btn-success" type="submit">Know</button></td>
+                                </tr>
+                            </table>
                         </div>
                     </div>
                 }
 
                 <div class="container col-md-5" id="what_I_know">
-                    <a>What I Know</a>
+                   
                     <table>
                         @foreach (var item in Model.Knows)
                         {
-                            <tr>
+                            <tr class="container col-md-12" id="comments" style="background-color: @item.KnowColour">
                                 <td>@Html.DisplayFor(m => item.KnowComment)</td>
                             </tr>
                         }
                     </table>
+               
                 </div>
+
                 <div class="container col-md-5" id="what_I_know">
                     <a>Team Know</a>
                 </div>
@@ -112,3 +75,53 @@
             <h2>instruction</h2>
         </div>
     </div>
+    <style>
+        #container-style {
+            background-color: #f5f6f7;
+            border-style: solid;
+            border-color: #dbd3de;
+            border-width: 2px;
+            height: 650px;
+            margin: 5px;
+            border-radius: 10px;
+            text-align: center
+        }
+        #know-container {
+            background-color: white;
+            border-style: solid;
+            border-color: black;
+            border-width: 1px;
+            height: 560px;
+            width: 825px;
+            margin-top: 67px;
+
+        }
+
+        .tab-button {
+            color: #364c73;
+            margin-top:30px;
+            background-color: white;
+            border-style: solid;
+            border-color: black;
+            border-bottom-right-radius: 0px;
+            border-bottom-left-radius: 0px;
+            border-bottom-color: white;
+            border-width: 1px;
+            @*pointer-events:none;*@
+        }
+        #what_I_know {
+            background-color: #d3cbf2;
+            margin-top: 5px;
+            margin-left: 40px;
+            border-radius: 5px;
+            height: 450px;
+        }
+
+        #comments {
+            border-radius: 5px;
+            margin-top:5px;
+            text-align:left;
+
+        }
+
+    </style>

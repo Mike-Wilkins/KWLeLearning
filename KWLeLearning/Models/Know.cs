@@ -14,5 +14,7 @@ namespace KWLeLearning.Models
         public string KnowPassword { get; set; }
 
         public string KnowComment { get; set; }
+
+        public string KnowColour { get; set; }
     }
 }

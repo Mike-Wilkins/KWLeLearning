@@ -27,7 +27,7 @@
                     <nav class="navbar navbar-expand-lg">
                        
                             <ul class="navbar-nav mr-auto" >
-                                <li class="nav-item"><a href="@Url.Action("Index","Home", new { Password = Request["Password"]})" style="padding:28px"><img src="@Url.Content("~/images/home.png")" height="30" /></a></li>
+                                <li class="nav-item"><a href="@Url.Action("Index","Home", new { Password = Request["Password"], Colour = Request["Colour"]})" style="padding:28px"><img src="@Url.Content("~/images/home.png")" height="30" /></a></li>
                                 <li class="nav-item"><a href="@Url.Action("Details","Student", new { Password = Request["Password"]})" style="padding:28px"><img src="@Url.Content("~/images/details.png")" height="30" /></a></li>
                                 <li class="nav-item"><a style="padding: 30px" href="javascript:document.getElementById('logoutForm').submit()"><img src="@Url.Content("~/images/logoff.png")" height="27" style="padding-right:5px" /></a></li>
                                 <li class="nav-item"><a style="padding: 32px" color:azure; font-size:15px;><img src="@Url.Content("~/images/user.png")" height="23" style="padding-right:5px" /> @User.Identity.GetUserName()</a></li>
