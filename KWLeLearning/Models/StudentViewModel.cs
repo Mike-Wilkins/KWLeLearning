@@ -9,6 +9,7 @@ namespace KWLeLearning.Models
     {
         public Student StudentDetails { get; set; }
 
+
         public RegisterViewModel Register { get; set; }
 
     }

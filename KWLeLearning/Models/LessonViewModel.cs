@@ -7,8 +7,11 @@ namespace KWLeLearning.Models
 {
     public class LessonViewModel
     {
-        public Student Student { get; set; }
 
-        public Know Know { get; set; }
+        public IEnumerable<Student> Students { get; set; }
+
+        public IEnumerable<Know> Knows { get; set; }
+
+        public string KnowComment { get; set; }
     }
 }
