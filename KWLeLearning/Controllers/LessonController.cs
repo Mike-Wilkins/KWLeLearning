@@ -32,16 +32,18 @@ namespace KWLeLearning.Controllers
 
         [HttpPost]
         // POST: Know/ KnowComment
-        public ActionResult Know(LessonViewModel comment, string password)
+        public ActionResult Know(LessonViewModel comment, string password, string colour)
         {
             var db = new ApplicationDbContext();
             var knowComment = new Know();
 
             knowComment.KnowComment = comment.KnowComment;
             knowComment.KnowPassword = password;
+            knowComment.KnowColour = colour;
 
             db.Know.Add(knowComment);
             db.SaveChanges();
+            ModelState.Clear();
 
            
             var result = db.Student.Where(m => m.Password == password).FirstOrDefault();
