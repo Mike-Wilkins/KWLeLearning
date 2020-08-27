@@ -36,9 +36,8 @@ namespace KWLeLearning.Controllers
                 var result = db.Student.Where(m => m.Password == password).FirstOrDefault();
                 var model = new LessonViewModel
                 {
-                    Students = kwlDb.Student.Where(m => m.Team == result.Team).ToList(),
+                    Students = kwlDb.Student.OrderByDescending(m => m.IsLoggedIn == true).Where(m => m.Team == result.Team).ToList(),
                     Knows = kwlDb.Know.Where(m => m.KnowPassword == password).ToList()
-
                 };
                 return View(model);
             }
@@ -47,10 +46,8 @@ namespace KWLeLearning.Controllers
             var teamResult = db.Student.Where(m => m.Password == password).FirstOrDefault();
             var teammodel = new LessonViewModel
             {
-                Students = kwlDb.Student.Where(m => m.Team == teamResult.Team).ToList(),
-                Knows = kwlDb.Know.Where(m => m.Team == team).ToList()
-
-
+                Students = kwlDb.Student.OrderByDescending(m => m.IsLoggedIn == true).Where(m => m.Team == teamResult.Team).ToList(),
+                Knows = kwlDb.Know.OrderByDescending(m => m.Id).Where(m => m.Team == team).ToList()
             };
 
             return View(teammodel);
@@ -93,11 +90,9 @@ namespace KWLeLearning.Controllers
                 var result = db.Student.Where(m => m.Password == password).FirstOrDefault();
                 var model = new LessonViewModel
                     {
-                      Students = kwlDb.Student.Where(m => m.Team == result.Team).ToList(),
-                      Knows = kwlDb.Know.Where(m => m.KnowPassword == password).ToList()
-                
+                        Students = kwlDb.Student.OrderByDescending(m => m.IsLoggedIn == true).Where(m => m.Team == result.Team).ToList(),
+                        Knows = kwlDb.Know.Where(m => m.KnowPassword == password).ToList()
                     };
-
 
                 var studentEdit = new ApplicationDbContext();
                 var resultEdit = studentEdit.Student.Where(m => m.Password == password).FirstOrDefault();
@@ -117,8 +112,6 @@ namespace KWLeLearning.Controllers
                 studentEdit.Student.Add(student);
                 studentEdit.SaveChanges();
 
-
-
                 return View(model);
 
             }
@@ -128,10 +121,8 @@ namespace KWLeLearning.Controllers
             var teamResult = db.Student.Where(m => m.Password == password).FirstOrDefault();
             var teammodel = new LessonViewModel
             {
-                Students = kwlDb.Student.Where(m => m.Team == teamResult.Team).ToList(),
-                Knows = kwlDb.Know.Where(m => m.Team == team).ToList()
-               
-
+                Students = kwlDb.Student.OrderByDescending(m => m.IsLoggedIn == true).Where(m => m.Team == teamResult.Team).ToList(),
+                Knows = kwlDb.Know.OrderByDescending(m => m.Id).Where(m => m.Team == team).ToList()
             };
 
 
