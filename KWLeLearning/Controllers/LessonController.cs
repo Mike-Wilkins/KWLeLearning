@@ -17,18 +17,43 @@ namespace KWLeLearning.Controllers
 
         [Authorize]
         // GET: Know Team
-        public ActionResult Know(string password)
+        public ActionResult Know(string password, string team)
         {
             var db = new ApplicationDbContext();
-            var result = db.Student.Where(m => m.Password == password).FirstOrDefault();
 
-            var model = new LessonViewModel
+            // Get KnowCount from db
+
+            var commentCount = db.Student.Where(m => m.Password == password).FirstOrDefault();
+            var sum = commentCount.KnowCount;
+
+            // Check KnowCount is less than or equal to 3
+            // Is less than three only show student comments
+            // Update student db KnowCounter
+            var student = new Student();
+
+            if(sum <= 1)
             {
-                Students = kwlDb.Student.Where(m => m.Team == result.Team).ToList(),
-                Knows = kwlDb.Know.Where(m => m.KnowPassword == password).ToList()
+                var result = db.Student.Where(m => m.Password == password).FirstOrDefault();
+                var model = new LessonViewModel
+                {
+                    Students = kwlDb.Student.Where(m => m.Team == result.Team).ToList(),
+                    Knows = kwlDb.Know.Where(m => m.KnowPassword == password).ToList()
+
+                };
+                return View(model);
+            }
+            // Is counter is greater than three show student TEAM comments
+
+            var teamResult = db.Student.Where(m => m.Password == password).FirstOrDefault();
+            var teammodel = new LessonViewModel
+            {
+                Students = kwlDb.Student.Where(m => m.Team == teamResult.Team).ToList(),
+                Knows = kwlDb.Know.Where(m => m.Team == team).ToList()
+
 
             };
-            return View(model);
+
+            return View(teammodel);
         }
 
         [HttpPost]
