@@ -30,5 +30,9 @@ namespace KWLeLearning.Models
 
         public string Colour { get; set; }
 
+        public int KnowCount { get; set; }
+
+        public int WhatCount { get; set; }
+
     }
 }

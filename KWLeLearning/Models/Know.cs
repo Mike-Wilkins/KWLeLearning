@@ -16,5 +16,7 @@ namespace KWLeLearning.Models
         public string KnowComment { get; set; }
 
         public string KnowColour { get; set; }
+
+        public string Team { get; set; }
     }
 }

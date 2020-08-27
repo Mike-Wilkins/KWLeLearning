@@ -95,6 +95,7 @@ namespace KWLeLearning.Controllers
                     team.Email = teamResult.Email;
                     team.Colour = teamResult.Colour;
                     team.IsLoggedIn = true;
+                    team.KnowCount = teamResult.KnowCount;
 
                     db.Student.Remove(teamResult);
 
@@ -472,6 +473,7 @@ namespace KWLeLearning.Controllers
             student.Team = result.Team;
             student.IsLoggedIn = false;
             student.Colour = result.Colour;
+            student.KnowCount = result.KnowCount;
 
             dbContext.Student.Remove(result);
             dbContext.Student.Add(student);

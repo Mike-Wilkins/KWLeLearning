@@ -37,7 +37,7 @@
 
             <div class="container" id="know-container">
 
-                @using (Html.BeginForm("Know", "Lesson", new { Password = Request["Password"], Colour = Request["Colour"]}, FormMethod.Post))
+                @using (Html.BeginForm("Know", "Lesson", new { Password = Request["Password"], Colour = Request["Colour"], Team = Request["Team"]}, FormMethod.Post))
                 {
                     <div class="form-group">
             
