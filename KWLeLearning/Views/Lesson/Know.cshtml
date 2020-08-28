@@ -5,77 +5,89 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 
 }
-    
 
 
-    <div class="row" style="margin-top: 50px">
-        <div class="container-fluid col-md-1" id="container-style" style="height: 170px">
-            <h3>Team</h3>
-            <table>
-                @foreach (var item in Model.Students)
-                {
-                    <tr>
-                        <td style="padding-right: 5px; padding-left:7px">@Html.DisplayFor(modelItem => item.Firstname)</td>
 
-                        @if (item.IsLoggedIn == true)
-                        {
-                            <td><img src="~/images/loggedin.png" height="15" style="margin-bottom:3px" /></td>
-                        }
-                        else
-                        {
-                            <td><img src="~/images/loggedOut.png" height="15" style="margin-bottom:3px" /></td>
-                        }
-                    </tr>
-                }
-            </table>
-        </div>
+<div class="row" style="margin-top: 50px">
+    <div class="container-fluid col-md-1" id="container-style" style="height: 170px">
+        <h3>Team</h3>
+        <table>
+            @foreach (var item in Model.Students)
+            {
+                <tr>
+                    <td style="padding-right: 5px; padding-left:7px">@Html.DisplayFor(modelItem => item.Firstname)</td>
 
-        <div class="container-fluid col-md-8" id="container-style">
-            @Html.ActionLink("Know", "Know", "Lesson", new { Password = Request["Password"], Username = Request["Username"] }, new { @class = " btn tab-button", @style = "float:left; margin-left: 10px" })
-            @Html.ActionLink("What", "What", "Lesson", new { Password = Request["Password"], Username = Request["Username"] }, new { @class = "btn tab-button disabled", @style = "background-color: #d7d9db; border-bottom-color: black; float: left; margin-left:5px" })
-            @Html.ActionLink("Learned", "Learned", "Lesson", new { Password = Request["Password"], Username = Request["Username"] }, new { @class = "btn tab-button disabled", @style = "background-color: #d7d9db; border-bottom-color: black;float: left; margin-left:5px" })
+                    @if (item.IsLoggedIn == true)
+                    {
+                        <td><img src="~/images/loggedin.png" height="15" style="margin-bottom:3px" /></td>
+                    }
+                    else
+                    {
+                        <td><img src="~/images/loggedOut.png" height="15" style="margin-bottom:3px" /></td>
+                    }
+                </tr>
+            }
+        </table>
+    </div>
 
-            <div class="container" id="know-container">
+    <div class="container-fluid col-md-8" id="container-style">
+        @Html.ActionLink("Know", "Know", "Lesson", new { Password = Request["Password"], Username = Request["Username"], Team = Request["Team"] }, new { @class = " btn tab-button", @style = "float:left; margin-left: 10px" })
 
-                @using (Html.BeginForm("Know", "Lesson", new { Password = Request["Password"], Colour = Request["Colour"], Team = Request["Team"]}, FormMethod.Post))
-                {
-                    <div class="form-group">
-            
-                        <div style="margin-top: 10px">
-                            <table>
-                                <tr>
-                                    <td>@Html.TextBoxFor(m => m.KnowComment, new { @class = "form-control", @style = "width:350px; margin-right: 5px"})</td>
-                                    <td><button class="btn btn-success" type="submit">Know</button></td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                }
+        @if (Model.KnowCommentCount <= 2)
+        {
+            @Html.ActionLink("What", "What", "Lesson", new { Password = Request["Password"], Username = Request["Username"], Team = Request["Team"] }, new { @class = "btn tab-button disabled", @style = "background-color: #d7d9db; border-bottom-color: black; float: left; margin-left:5px;" })
+        }
+        else
+        {
+            @Html.ActionLink("What", "What", "Lesson", new { Password = Request["Password"], Username = Request["Username"], Team = Request["Team"] }, new { @class = "btn tab-button", @style = "background-color: #d7d9db; border-bottom-color: black; float: left; margin-left:5px;" })
+        }
 
-                <div class="container col-md-5" id="what_I_know">
-                   
-                    <table>
-                        @foreach (var item in Model.Knows)
-                        {
-                            <tr class="container col-md-12" id="comments" style="background-color: @item.KnowColour">
-                                <td>@Html.DisplayFor(m => item.KnowComment)</td>
+        @Html.ActionLink("Learned", "Learned", "Lesson", new { Password = Request["Password"], Username = Request["Username"], Team = Request["Team"] }, new { @class = "btn tab-button disabled", @style = "background-color: #d7d9db; border-bottom-color: black;float: left; margin-left:5px" })
+
+        <div class="container" id="know-container">
+
+            @using (Html.BeginForm("Know", "Lesson", new { Password = Request["Password"], Colour = Request["Colour"], Team = Request["Team"] }, FormMethod.Post))
+            {
+                <div class="form-group">
+
+                    <div style="margin-top: 10px">
+                        <table>
+                            <tr>
+                                <td>@Html.TextBoxFor(m => m.KnowComment, new { @class = "form-control", @style = "width:350px; margin-right: 5px" })</td>
+                                <td><button class="btn btn-success" type="submit">Know</button></td>
+
                             </tr>
-                        }
-                    </table>
-               
+                        </table>
+                    </div>
                 </div>
+            }
 
-                <div class="container col-md-5" id="what_I_know">
-                    <a>Team Know</a>
-                </div>
+            <div class="container col-md-5" id="what_I_know">
+
+                <table>
+                    @foreach (var item in Model.Knows)
+                    {
+                        <tr class="container col-md-12" id="comments" style="background-color: @item.KnowColour">
+                            <td>@Html.DisplayFor(m => item.KnowComment)</td>
+                        </tr>
+                    }
+                </table>
+
+            </div>
+
+            <div class="container col-md-5" id="what_I_know">
+                <a>Team Know</a>
             </div>
         </div>
-
-        <div class="container-fluid col-md-2" id="container-style">
-            <h2>instruction</h2>
-        </div>
     </div>
-    <style>
+
+    <div class="container-fluid col-md-2" id="container-style">
+        <h2>instruction</h2>
+    </div>
+</div>
+
+
+<style>
         #container-style {
             background-color: #f5f6f7;
             border-style: solid;
@@ -107,8 +119,10 @@
             border-bottom-left-radius: 0px;
             border-bottom-color: white;
             border-width: 1px;
-            @*pointer-events:none;*@
+          
         }
+
+
         #what_I_know {
             background-color: #d3cbf2;
             margin-top: 5px;
@@ -124,4 +138,7 @@
 
         }
 
-    </style>
+
+</style>
+
+

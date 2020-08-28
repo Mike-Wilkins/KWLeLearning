@@ -27,7 +27,7 @@ namespace KWLeLearning.Controllers
             var sum = commentCount.KnowCount;
 
             // Check KnowCount is less than or equal to 3
-            // Is less than three only show student comments
+            // If less than three only show student comments
             // Update student db KnowCounter
             var student = new Student();
 
@@ -39,9 +39,10 @@ namespace KWLeLearning.Controllers
                     Students = kwlDb.Student.OrderByDescending(m => m.IsLoggedIn == true).Where(m => m.Team == result.Team).ToList(),
                     Knows = kwlDb.Know.Where(m => m.KnowPassword == password).ToList()
                 };
+                model.KnowCommentCount = result.KnowCount;
                 return View(model);
             }
-            // Is counter is greater than three show student TEAM comments
+            // If counter is greater than three show student TEAM comments
 
             var teamResult = db.Student.Where(m => m.Password == password).FirstOrDefault();
             var teammodel = new LessonViewModel
@@ -49,6 +50,7 @@ namespace KWLeLearning.Controllers
                 Students = kwlDb.Student.OrderByDescending(m => m.IsLoggedIn == true).Where(m => m.Team == teamResult.Team).ToList(),
                 Knows = kwlDb.Know.OrderByDescending(m => m.Id).Where(m => m.Team == team).ToList()
             };
+            teammodel.KnowCommentCount = teamResult.KnowCount;
 
             return View(teammodel);
         }
@@ -77,8 +79,6 @@ namespace KWLeLearning.Controllers
             var commentCount = db.Student.Where(m => m.Password == password).FirstOrDefault();
             var sum = commentCount.KnowCount;
 
-
-
             // Check KnowCount is less than or equal to 3
             // Is less than three only show student comments
             // Update student db KnowCounter
@@ -93,6 +93,8 @@ namespace KWLeLearning.Controllers
                         Students = kwlDb.Student.OrderByDescending(m => m.IsLoggedIn == true).Where(m => m.Team == result.Team).ToList(),
                         Knows = kwlDb.Know.Where(m => m.KnowPassword == password).ToList()
                     };
+
+               
 
                 var studentEdit = new ApplicationDbContext();
                 var resultEdit = studentEdit.Student.Where(m => m.Password == password).FirstOrDefault();
@@ -112,6 +114,8 @@ namespace KWLeLearning.Controllers
                 studentEdit.Student.Add(student);
                 studentEdit.SaveChanges();
 
+                model.KnowCommentCount = student.KnowCount;
+
                 return View(model);
 
             }
@@ -125,6 +129,26 @@ namespace KWLeLearning.Controllers
                 Knows = kwlDb.Know.OrderByDescending(m => m.Id).Where(m => m.Team == team).ToList()
             };
 
+
+            var editStudent = new ApplicationDbContext();
+            var editResult = editStudent.Student.Where(m => m.Password == password).FirstOrDefault();
+
+            editStudent.Student.Remove(editResult);
+
+            student.Firstname = teamResult.Firstname;
+            student.Surname = teamResult.Surname;
+            student.Username = teamResult.Username;
+            student.Password = teamResult.Password;
+            student.Team = teamResult.Team;
+            student.IsLoggedIn = teamResult.IsLoggedIn;
+            student.Email = teamResult.Email;
+            student.Colour = teamResult.Colour;
+            student.KnowCount = teamResult.KnowCount + 1;
+
+            editStudent.Student.Add(student);
+            editStudent.SaveChanges();
+
+            teammodel.KnowCommentCount = student.KnowCount;
 
             return View(teammodel);
 
