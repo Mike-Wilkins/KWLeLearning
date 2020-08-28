@@ -13,5 +13,7 @@ namespace KWLeLearning.Models
         public IEnumerable<Know> Knows { get; set; }
 
         public string KnowComment { get; set; }
+
+        public int KnowCommentCount { get; set; }
     }
 }
